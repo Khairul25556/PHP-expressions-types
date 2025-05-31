@@ -1,17 +1,15 @@
 <?php
 
-echo $name = "khairul";
+$arr = [
+    "pc" => 30,
+    "laptop" => 20,
+    "table" => 50
+];
 
-echo "\nI am ", $name, ".Thank you\n";
+$totalQuantity = 0;
+foreach($arr as $items=>$quantity){
+    echo "$items: $quantity\n";
+    $totalQuantity += $quantity;
+}
 
-$num1 = 10;
-$num2 = "20";
-$sum = $num1 + $num2;
-echo $sum, "\n";
-
-var_dump($num1, $num2);
-echo $num1 === $num2 ? "True" : "False";
-
-echo "\n";
-$a = 1;
-var_dump($a, $a == true);
+echo "The total quantity of items are: $totalQuantity";
