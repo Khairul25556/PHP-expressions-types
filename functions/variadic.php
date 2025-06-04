@@ -13,6 +13,7 @@ function sum(int ...$numbers): int{
 var_dump(sum());
 var_dump(sum(10,20));
 var_dump(sum(20, 30, 50));
+
 //Destructuring
 $num = [100, 300, 400];
 var_dump(sum(...$num));
