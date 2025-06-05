@@ -11,7 +11,7 @@ function revealidentity(){
 }
 
 revealidentity();
-echo "$superhero\n"; //now the $superhero changed to spiderman. so avoid this 
+echo "$superhero\n"; //now the $superhero changed to spiderman. so avoid this !
 
 //Static Scope
 
