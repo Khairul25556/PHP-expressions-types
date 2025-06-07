@@ -24,7 +24,6 @@ var_dump($admins, $morty);
 
 //Another Example
 
-
 $info = [
     ['id' => '001', 'department' => 'EEE'],
     ['id' => '002', 'department' => 'ICE'],
@@ -41,3 +40,21 @@ $EEE = array_filter($info, $isEEE);
 $isId = createFilter2('id', '001');
 $id = array_filter($info, $isId); 
 var_dump($EEE, $id);
+
+//Another Example
+
+$product = [
+    ['item1' => 'Msi Mouse', 'price' => '3000'],
+    ['item2' => 'Asus Keyboard', 'price' => '8000'],
+    ['item3' => 'Asus Tuff Laptop', 'price' => '90000']
+];
+
+function createFilter3($key, $value){
+    return fn($products) => $products[$key] === $value;
+}
+
+$laptop = createFilter3('item3', 'Asus Tuff Laptop');
+$gamingLaptop = array_filter($product, $laptop);
+
+print_r($gamingLaptop); //Print readable array output
+
