@@ -3,7 +3,7 @@
 $str = "Hello!,World";
 
 //echo $str[0];
-//echo $str[-1];
+//echo $str[-1]; //End of the string
 
 //echo substr($str, 0, 6); //From index 0, take 6 characters
 //echo substr($str, 5); //From index 5, go till the end

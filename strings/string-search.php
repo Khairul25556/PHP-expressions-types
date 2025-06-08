@@ -10,7 +10,8 @@ $pos = strpos($str, "quick");
 var_dump($pos);
 
 //Proper way to search without replacing
-preg_match_all('/\w{5}/', $str, $matches); //This line is using Regular Expressions (regex) to find all 5-letter words in the string $str.
+preg_match_all('/\w{5}/', $str, $matches); 
+//This line is using Regular Expressions (regex) to find all 5-letter words in the string $str.
 //   /.../Delimiters (standard in regex)
 // \w	Matches any word character (letters, numbers, and underscores)
 //{5}	Matches exactly 5 word characters in a row
