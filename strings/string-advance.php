@@ -13,6 +13,6 @@ var_dump(urldecode(urlencode($url)));
 $html = "<p>This is 'quoted' text & a <a href='#'>link</a></p>";
 var_dump(htmlentities($html)); //htmlentities converts special characters in the string into HTML entities. So the HTML is shown as plain text in the browser — not executed.
 
-$text = base64_encode("hello Rick!");
-
+//Base64 is a way to encode binary data (like images, files, or text) into a string using only safe, printable characters — so it can be sent over the internet easily (like in emails, URLs, JSON, etc.).
+$text = base64_encode("hello Rick!"); 
 var_dump(base64_decode($text));
