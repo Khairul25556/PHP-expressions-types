@@ -4,7 +4,6 @@
 
 //The class Person can store a name and age.
 //The introduce() method can introduce the person using their name and age.
-
 class Person{
     // public string $name; //public means this property can be accessed from anywhere.
     // public int $age;
@@ -15,7 +14,7 @@ class Person{
     //     $this->age = $age;
     }
 
-    public function introduce(): string{
+    public function introduce(): string{ //$this means "this current object" inside the class.
         return "Hi, I'm {$this -> name} and I'm {$this -> age} years old.\n"; //-> means access the method or property inside the object.
     }
 }   
