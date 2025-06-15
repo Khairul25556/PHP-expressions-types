@@ -64,8 +64,8 @@ class Laptop{
     }
 }
 
-$laptop = new Laptop("MSI Gaming", 80000);
-echo $laptop -> details();
+$laptop = new Laptop("MSI Gaming", 80000); //object
+echo $laptop -> details(); //Print the result of calling the details() method from the $laptop object.
 
 //Now inheritance process
 class Gpu extends Laptop{
