@@ -8,6 +8,7 @@
 //$this means "this current object" inside the class.
 class BankAccount{
     //Private Only accessible inside the class. (You can’t directly access it from outside the class.)
+    
     // This is a class member: Property
     private float $balance = 0;
 
