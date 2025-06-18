@@ -104,3 +104,43 @@ class Server{
 $connection = Server::connection();
 
 echo $connection;
+
+//Another example
+class PowerPlant{
+    private static $instance = null;
+    private function __construct(){}
+
+    private static $boiler = "Start";
+    private static $cooler = "Run";
+    private static $transformer = "on";
+
+    public static function getInstance(){
+        if(self::$instance === null){
+            self::$instance = new PowerPlant();
+        }
+
+        return self::$instance;
+    }
+
+    public static function start(){
+        if(self::$boiler === "Start" && self::$cooler === "Run"){
+            return "Boiler in running. ";
+        } 
+        return "Failed to run the boiler!. ";
+    }
+
+    public static function TS(){
+        $power = 220;
+        $current = 100;
+        if(self::$transformer === "on"){
+            return "{$power}-{$current} Transformer is connected. ";
+        } 
+        return "{$power}-{$current} failed to run. The whole power plant is shutting down!";
+    }
+}
+
+$powerplant_init = PowerPlant::start();
+$powerplant_push = PowerPlant::TS();
+
+echo $powerplant_init;
+echo $powerplant_push;
