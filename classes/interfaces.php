@@ -32,5 +32,4 @@ $payment = new BikashPayment();
 var_dump($payment -> processPayment(500));
 var_dump($payment -> refundPayment(400));
 
-//Example 2
 
