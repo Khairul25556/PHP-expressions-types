@@ -21,8 +21,10 @@ abstract class OnlinePaymentProcessor implements PaymentProcessor{
     ){}
 
     //Forces child classes to create their own API key validation logic.
-    //every child class MUST have its own API key validation logic.
+    //every child class MUST have its own API key validation logic or whatever logic we define.
     abstract protected function validateApiKey(): bool; //🟡 BASE (MUST be completed by child)
+    abstract protected function executePayment(float $amount): bool;
+    abstract protected function executeRefund(float $amount): bool;
 
     //want some logic for interfaces. we need to implements those methods
     // Shared logic for all children
@@ -30,14 +32,14 @@ abstract class OnlinePaymentProcessor implements PaymentProcessor{
         if(!$this -> validateApiKey()){
             throw new Exception("Invalid API key"); //Immediately stop further code execution if the API key is invalid.
         }
-        return true;
+        return $this->executePayment($amount);
     }
 
     public function refundPayment(float $amount): bool{
         if(!$this->validateApiKey()){
             throw new Exception("Invalid API key");
         }
-        return true;
+        return $this->executeRefund($amount);
     }
 }
 
@@ -56,14 +58,26 @@ class PayPalProcessor extends OnlinePaymentProcessor{ // 🟢 CHILD
     }
 } //so apiKey can be accessible
 
+//directly implements the interface and does not need to extends
+class CashPaymentProcessor implements PaymentProcessor{
+    public function processPayment(float $amount): bool{
+        echo "Cash payment...";
+        return true;
+    }
+    public function refundPayment(float $amount): bool{
+        echo "Cash refund...";
+        return true;
+    }
+}
+
 // Creating an object from the CHILD class
 $processor = new StripeProcessor("sk_"); //🟢 CHILD OBJECT //we can not create objects from abstract classes. so that we have to use child object
-$processor -> processPayment(500); // Runs processPayment from base, uses validateApiKey from child
-$processor -> refundPayment(1000); //refund 1000 but first need to validate API KEY
+var_dump($processor -> processPayment(500)); // Runs processPayment from base, uses validateApiKey from child
+var_dump($processor -> refundPayment(1000)); //refund 1000 but first need to validate API KEY
 
 $processor = new PayPalProcessor("12345678901234567890123456789012");
-$processor -> processPayment(500); //paying 500 but first need to validate API KEY 
-$processor -> refundPayment(1000); //refund 1000 but first need to validate API KEY
+var_dump($processor -> processPayment(500)); //paying 500 but first need to validate API KEY 
+var_dump($processor -> refundPayment(1000)); //refund 1000 but first need to validate API KEY
 
 
 
