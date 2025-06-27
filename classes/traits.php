@@ -36,3 +36,47 @@ class User implements Logger{
 
 $test = new User("Khairul");
 $test->save();
+
+//Example 2
+
+interface PublicAccount{
+    public function log(string $message): void;
+}
+
+trait AccountMethod{
+    public function log(string $message): void{
+        echo "Logging: $message";
+    }
+}
+
+class User2 implements PublicAccount{
+    use AccountMethod;
+    public function __construct(public string $name){}
+
+    public function save(): void{
+    $this->log("user $this->name logged in\n");
+    }
+    
+
+}
+
+class Admin implements PublicAccount{
+    use AccountMethod;
+
+    public function __construct(public string $name, public string $password){}
+
+    public function save(): void{
+        if($this->password === "Admin4561"){
+            $this->log("Admin $this->name logged in.\n");
+        } else{
+            echo "Access denied for $this->name!\n";
+        }
+    }
+    
+}
+
+$test3 = new User2("Rex");
+$test3->save();
+
+$test4 = new Admin("Rick", "Admin4561");
+$test4->save();
